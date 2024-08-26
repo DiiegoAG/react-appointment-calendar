@@ -26,9 +26,16 @@ export function Calendar () {
     return (
         <div className="calendario">
             <div className="header">
-                <button onClick={handlePrevMonth}>&lt;</button>
-                <h2>{date.toLocaleDateString('es-ES', { month: 'long', year: 'numeric' })}</h2>
-                <button onClick={handleNextMonth}>&gt;</button>
+                <div className="arrows-container">
+                    <button onClick={handlePrevMonth}>&lt;</button>
+                    <button onClick={handleNextMonth}>&gt;</button>
+                </div>
+                <div className="title-container">
+                    <h2>{date.toLocaleDateString('en-EN', { month: 'long', year: 'numeric' })}</h2>
+                </div>
+                <div className='appointments-button-container' onClick={handleAppointmentsBar}>
+                    <button>Appointments</button>
+                </div>
             </div>
             <div className="days-of-week">
                 {['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'].map(day => (
