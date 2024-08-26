@@ -45,9 +45,17 @@
     cursor: pointer;
 }
 
+.day:hover {
+    background-color: #f5f5f5;
+}
+
 .day.empty {
     background-color: #f5f5f5;
     cursor: default;
+}
+
+.day.current-day {
+    background-color: #00bcff69;
 }
 
 @media (width <= 450px) {
