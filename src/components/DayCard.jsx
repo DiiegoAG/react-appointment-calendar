@@ -11,6 +11,11 @@ export function DayCard ({index, day, month, year, setAppointment}) {
         let name = window.prompt("Name of event")
         let time = window.prompt("Time in 24 hour format", "13:00")
 
+        if (!name && !time) {
+            return
+        }
+
+
     return (
         <div key={index} className={`day${day ? '' : 'empty'}${now == dateFromDay ? ' current-day' : '' }`} onDoubleClick={handleClick}>
             <a>{day}</a>
