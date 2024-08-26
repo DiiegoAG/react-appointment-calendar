@@ -1,11 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { DayCard } from '../components/DayCard'
 import '../Calendar.css'
 import { useLocalStorageState } from '../hooks/useLocalStorageState'
+import useFetch from '../hooks/useFetch'
 
 export function Calendar () {
     const [localAppointments, setLocalAppointment] = useLocalStorageState('appointments', [])
+    const [onlineAppointments, setOnlineAppointments] = useState([])
     const [date, setDate] = useState(new Date())
+
+    useEffect(() => {
+        useFetch('https://altomobile.blob.core.windows.net/api/test.json')
+            .then((res) => {
+                setOnlineAppointments(current => [...current, res])
+            })
+    }, [])
 
     const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate()
     const startDay = new Date(date.getFullYear(), date.getMonth(), 1).getDay()
