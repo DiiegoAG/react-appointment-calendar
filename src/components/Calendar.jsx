@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import { DayCard } from '../components/DayCard'
 import '../Calendar.css'
+import { useLocalStorageState } from '../hooks/useLocalStorageState'
 
 export function Calendar () {
+    const [localAppointments, setLocalAppointment] = useLocalStorageState('appointments', [])
     const [date, setDate] = useState(new Date())
 
     const daysInMonth = (month, year) => new Date(year, month + 1, 0).getDate()
@@ -23,6 +25,12 @@ export function Calendar () {
             <DayCard key={index} day={day} month={date.getMonth()} year={date.getFullYear()} setAppointment={postAppointment}></DayCard>
         ))
     }
+
+    const postAppointment = (appointment) => {
+        const newList = [...localAppointments, appointment]
+        setLocalAppointment(newList)
+    }
+
     return (
         <div className="calendario">
             <div className="header">
