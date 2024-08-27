@@ -72,6 +72,10 @@
     background-color: #00bcff69;
 }
 
+.has-appointments {
+    border-bottom: dotted red 5px;
+}
+
 @media (width <= 450px) {
     .days {
         height: 50%;
