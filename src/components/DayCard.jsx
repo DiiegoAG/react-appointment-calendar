@@ -42,7 +42,7 @@ export function DayCard ({index, day, month, year, setAppointment, sidebarState,
         }
 
         setAppointment({
-            time: moment(date).format('YYYY-MM-DDTh:mm:ss'),
+            time: moment(date).format('YYYY-MM-DDTHH:mm:ss'),
             name: name
         })
     };
