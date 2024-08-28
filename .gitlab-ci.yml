@@ -1,0 +1,37 @@
+stages:
+  - build
+
+cache:
+  paths:
+    - build
+
+# TEMPLATES
+
+.build: &build
+  image: node:lts-alpine3.13
+  stage: build
+  before_script:
+    - yarn install --production --frozen-lockfile
+  script:
+    - yarn build
+    - echo Build successful !
+  artifacts:
+    expire_in: 30 mins
+    paths:
+      - ./build
+
+.cache: &global_cache
+  key: $CI_REGISTRY_IMAGE
+  paths:
+    - node_modules/
+    - public/
+  policy: pull-push
+
+# STAGES
+
+build:
+  <<: *build
+  cache:
+    <<: *global_cache
+  only:
+    - tags
