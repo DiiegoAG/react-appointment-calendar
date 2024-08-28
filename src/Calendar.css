@@ -1,0 +1,83 @@
+.calendario {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+    display: flex;
+    padding: 20px 0 20px 0;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+}
+
+.header h2 {
+    margin: 0;
+}
+
+.arrows-container {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 10%;
+}
+
+.title-container {
+    width: 80%;
+    text-align: center;
+}
+
+.appointments-button-container {
+    width: 10%;
+}
+
+.days-of-week {
+    display: flex;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #ddd;
+}
+
+.day-name, .day {
+    width: calc(100% / 7);
+    text-align: center;
+    padding: 10px;
+}
+
+.days {
+    height: 80%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.day {
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.day:hover {
+    background-color: #f5f5f5;
+}
+
+.day.empty {
+    background-color: #f5f5f5;
+    cursor: default;
+}
+
+.day.current-day {
+    background-color: #00bcff69;
+}
+
+.has-appointments {
+    border-bottom: dotted red 5px;
+}
+
+@media (width <= 450px) {
+    .days {
+        height: 50%;
+    }
+  }
