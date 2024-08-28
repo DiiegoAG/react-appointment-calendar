@@ -68,10 +68,15 @@ export function Calendar () {
     }
 
     const findAppointments = (date) => {
-        const result = appointments.filter(appointment => moment(appointment.time, 'YYYY-MM-DD').isSame(date, 'day')).sort((a, b) => {
-            return moment(a.time).isBefore(moment(b.time)) ? -1 : 1;
+        const result = appointments.filter(appointment => moment(appointment.time, 'YYYY-MM-DD').isSame(date, 'day'))
+
+        const sortedData = result.sort((a, b) => {
+            return moment(a.time, 'YYYY-MM-DDTHH:mm:ss').isBefore(moment(b.time, 'YYYY-MM-DDTHH:mm:ss')) ? -1 : 1;
         });
-        setAppointmentsFiltered(result.sort())
+
+        console.log(sortedData)
+
+        setAppointmentsFiltered(sortedData)
     }
 
 
